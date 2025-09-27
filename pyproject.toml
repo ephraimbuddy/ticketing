@@ -5,7 +5,7 @@ description = "Airflow plugin used to manage external DagRun tickets."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "External Tickets Maintainers" }
+    { name = "Tickets Maintainers" }
 ]
 dependencies = [
     "apache-airflow>=3.0",

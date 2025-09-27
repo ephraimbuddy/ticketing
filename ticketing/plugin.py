@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from airflow.plugins_manager import AirflowPlugin
+from ticketing import listener
 
 
 class TicketingPlugin(AirflowPlugin):
-    name = "ticketing_fastapi_react"
+    name = "dag_run_ticketing"
+    listeners = [listener]
 
 
 __all__ = ["TicketingPlugin"]

@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from sqlalchemy import Column, DateTime, Index, Integer, String, Text
 
-from airflow.sdk.timezone import timezone
+from airflow.sdk import timezone
 from airflow.models.base import _get_schema, naming_convention
 from sqlalchemy import MetaData
 from sqlalchemy.orm import registry
+
 
 metadata = MetaData(schema=_get_schema(), naming_convention=naming_convention)
 
