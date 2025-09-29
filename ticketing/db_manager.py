@@ -18,3 +18,16 @@ class DRTDBManager(BaseDBManager):
     alembic_file = (PACKAGE_DIR / "alembic.ini").as_posix()
     supports_table_dropping = True
     revision_heads_map = _REVISION_HEADS_MAP
+
+    def downgrade(self, to_revision, from_revision=None, show_sql_only=False):
+        """Downgrade the database to a specific version."""
+        # alembic adds significant import time, so we import it lazily
+        from alembic import command
+
+        self.log.info(
+            "Attempting downgrade of DagRunTicket migration to revision %s", to_revision
+        )
+        config = self.get_alembic_config()
+        # show_sql_only not supported here but could be added if needed
+        self.log.info("Applying DagRunTicket downgrade migrations.")
+        command.downgrade(config, revision=to_revision, sql=show_sql_only)
