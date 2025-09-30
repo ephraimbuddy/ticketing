@@ -8,7 +8,7 @@ authors = [
     { name = "Tickets Maintainers" }
 ]
 dependencies = [
-    "apache-airflow>=3.0",
+    "apache-airflow>=3.1",
 ]
 
 [project.entry-points."airflow.plugins"]
