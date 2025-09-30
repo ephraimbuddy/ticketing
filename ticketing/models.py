@@ -5,9 +5,19 @@ from __future__ import annotations
 from sqlalchemy import Column, DateTime, Index, Integer, String, Text
 
 from airflow.sdk import timezone
-from airflow.models.base import _get_schema, naming_convention
+from airflow.configuration import conf
+from airflow.models.base import naming_convention
 from sqlalchemy import MetaData
 from sqlalchemy.orm import registry
+
+SQL_ALCHEMY_SCHEMA = conf.get("database", "SQL_ALCHEMY_SCHEMA")
+
+
+def _get_schema() -> str | None:
+    """Return the schema to use."""
+    if not SQL_ALCHEMY_SCHEMA or SQL_ALCHEMY_SCHEMA.isspace():
+        return None
+    return SQL_ALCHEMY_SCHEMA
 
 
 metadata = MetaData(schema=_get_schema(), naming_convention=naming_convention)
