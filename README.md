@@ -4,6 +4,11 @@
 
 This project accompanies the Airflow Summit presentation **"Seamless Integration: Building Applications That Leverage Airflow's Database Migration Framework."** It showcases a reference application that demonstrates how teams can extend Airflow's powerful migration tools to their plugins/providers ensuring seamless migrations in the apps.
 
+## About the Project
+
+A simple plugin including a listener plugin that mocks creating a ticket for every failed dag and logs these tickets with their URL in a database table (that’s why we need a custom db manager!).
+
+
 ## Features
 - **Database Migrations**: Utilizes Alembic for managing database schema changes, ensuring that your application's database evolves alongside Airflow's.
 - **Event Listeners**: Implements Airflow listeners to react to DAG run events, such as failures, and trigger actions like ticket creation.
